@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		4D045DCD26D669C900D4D816 /* Makefile in Resources */ = {isa = PBXBuildFile; fileRef = 4D045DCC26D669C900D4D816 /* Makefile */; };
 		4D0CFED024278D0900264B83 /* UpdateMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0CFECF24278D0900264B83 /* UpdateMenu.swift */; };
-		4D0CFED224278D8400264B83 /* InstallDockerMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0CFED124278D8400264B83 /* InstallDockerMenu.swift */; };
+		4D0CFED224278D8400264B83 /* PodmanRequiredMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0CFED124278D8400264B83 /* PodmanRequiredMenu.swift */; };
 		4D0CFED62427947900264B83 /* OpenStreamMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0CFED52427947900264B83 /* OpenStreamMenu.swift */; };
 		4D0CFED82427B04000264B83 /* VERSION in Resources */ = {isa = PBXBuildFile; fileRef = 4D0CFED72427B04000264B83 /* VERSION */; };
 		4D264644210CE84800B0570A /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D264643210CE84800B0570A /* MainMenu.swift */; };
-		4D5478E0240158DF00A954E8 /* Dockerfile in Resources */ = {isa = PBXBuildFile; fileRef = 4D5478DF240158DE00A954E8 /* Dockerfile */; };
+		4D5478E0240158DF00A954E8 /* Containerfile in Resources */ = {isa = PBXBuildFile; fileRef = 4D5478DF240158DE00A954E8 /* Containerfile */; };
 		4D867EEB2761340800EC726E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D867EEA2761340800EC726E /* main.swift */; };
 		4D9442722722EAA800D11C91 /* SelectPlayerMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9442712722EAA800D11C91 /* SelectPlayerMenu.swift */; };
 		4D94427627259F4E00D11C91 /* StreamFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D94427527259F4D00D11C91 /* StreamFile.swift */; };
@@ -32,7 +32,7 @@
 		AD5A83D224284D501D147C43 /* .swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = AD5A8D8C4E325373F824A049 /* .swiftformat */; };
 		AD5A84F962215738740BB907 /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5A858F957E477937BCFBBC /* Process.swift */; };
 		AD5A851516FD7B37B6A5216D /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5A8F4023FF35C231878AAE /* AppConfig.swift */; };
-		AD5A8710E6D64CC1A15C834A /* DockerEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5A8F85E66D4A2038E37C4C /* DockerEngine.swift */; };
+		AD5A8710E6D64CC1A15C834A /* PodmanEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5A8F85E66D4A2038E37C4C /* PodmanEngine.swift */; };
 		AD5A87C16ADD674A83F511DD /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5A8973E26FCFFC3435160B /* AppConstants.swift */; };
 		AD5A87F8527B2F798B55A8B3 /* acestream.conf in Resources */ = {isa = PBXBuildFile; fileRef = AD5A89B00E3E4D0ED1B81DED /* acestream.conf */; };
 		AD5A8874F6879E0DF60681F5 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = AD5A8225D690C3597305286E /* .swiftlint.yml */; };
@@ -42,7 +42,7 @@
 		AD5A8B1147DBEFCDB64C9215 /* NSAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5A8F6F082636C5D21A3C6E /* NSAlert.swift */; };
 		AD5A8BAC68DF8FA7D78C1FAC /* StreamPeers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5A80670EFB8FEC13A07959 /* StreamPeers.swift */; };
 		AD5A8C534C4A28B340F84D48 /* AceStreamPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5A86A22D03052826FE34C3 /* AceStreamPlaylist.swift */; };
-		AD5A8C93E5AA9CAF89B785D4 /* DockerImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5A8EAD6357A8D9E3D66A96 /* DockerImage.swift */; };
+		AD5A8C93E5AA9CAF89B785D4 /* PodmanImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5A8EAD6357A8D9E3D66A96 /* PodmanImage.swift */; };
 		AD5A8D213856C326D6A81B2A /* PartialMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5A889CB9C2FB4EB0E654B2 /* PartialMenu.swift */; };
 		AD5A8DA72773BB04DEBAD5B0 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = AD5A8D7C4E2554CA007B8BCA /* LICENSE */; };
 		AD5A8DFCB5206824C3DB82D1 /* Pipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5A800E3EAF8AB65F34487F /* Pipe.swift */; };
@@ -54,15 +54,15 @@
 /* Begin PBXFileReference section */
 		4D045DCC26D669C900D4D816 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile; sourceTree = SOURCE_ROOT; };
 		4D0CFECF24278D0900264B83 /* UpdateMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMenu.swift; sourceTree = "<group>"; };
-		4D0CFED124278D8400264B83 /* InstallDockerMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallDockerMenu.swift; sourceTree = "<group>"; };
+		4D0CFED124278D8400264B83 /* PodmanRequiredMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodmanRequiredMenu.swift; sourceTree = "<group>"; };
 		4D0CFED52427947900264B83 /* OpenStreamMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenStreamMenu.swift; sourceTree = "<group>"; };
 		4D0CFED72427B04000264B83 /* VERSION */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VERSION; sourceTree = SOURCE_ROOT; };
 		4D264643210CE84800B0570A /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
-		4D5478DF240158DE00A954E8 /* Dockerfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dockerfile; sourceTree = SOURCE_ROOT; };
+		4D5478DF240158DE00A954E8 /* Containerfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Containerfile; sourceTree = SOURCE_ROOT; };
 		4D867EEA2761340800EC726E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		4D9442712722EAA800D11C91 /* SelectPlayerMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlayerMenu.swift; sourceTree = "<group>"; };
 		4D94427527259F4D00D11C91 /* StreamFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamFile.swift; sourceTree = "<group>"; };
-		4DB4E66B2108FA7200C2F1F2 /* Ace Link.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ace Link.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DB4E66B2108FA7200C2F1F2 /* Ace Link Podman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ace Link Podman.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DB4E66E2108FA7200C2F1F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DB4E6722108FA7300C2F1F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4DB4E6772108FA7300C2F1F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -92,10 +92,10 @@
 		AD5A8D3A06CEA6D53BEAF667 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		AD5A8D7C4E2554CA007B8BCA /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
 		AD5A8D8C4E325373F824A049 /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = file.swiftformat; path = .swiftformat; sourceTree = "<group>"; };
-		AD5A8EAD6357A8D9E3D66A96 /* DockerImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DockerImage.swift; sourceTree = "<group>"; };
+		AD5A8EAD6357A8D9E3D66A96 /* PodmanImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodmanImage.swift; sourceTree = "<group>"; };
 		AD5A8F4023FF35C231878AAE /* AppConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		AD5A8F6F082636C5D21A3C6E /* NSAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAlert.swift; sourceTree = "<group>"; };
-		AD5A8F85E66D4A2038E37C4C /* DockerEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DockerEngine.swift; sourceTree = "<group>"; };
+		AD5A8F85E66D4A2038E37C4C /* PodmanEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodmanEngine.swift; sourceTree = "<group>"; };
 		AD5A8FCB503ABA8B866D285D /* acelink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = acelink.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -114,7 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				4DCF492826BFF70000A54904 /* HistoryMenu.swift */,
-				4D0CFED124278D8400264B83 /* InstallDockerMenu.swift */,
+				4D0CFED124278D8400264B83 /* PodmanRequiredMenu.swift */,
 				4D264643210CE84800B0570A /* MainMenu.swift */,
 				4D0CFED52427947900264B83 /* OpenStreamMenu.swift */,
 				AD5A889CB9C2FB4EB0E654B2 /* PartialMenu.swift */,
@@ -135,7 +135,7 @@
 		4DB4E66C2108FA7200C2F1F2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4DB4E66B2108FA7200C2F1F2 /* Ace Link.app */,
+				4DB4E66B2108FA7200C2F1F2 /* Ace Link Podman.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -159,7 +159,7 @@
 				AD5A8FCB503ABA8B866D285D /* acelink.png */,
 				AD5A89B00E3E4D0ED1B81DED /* acestream.conf */,
 				4DB4E6722108FA7300C2F1F2 /* Assets.xcassets */,
-				4D5478DF240158DE00A954E8 /* Dockerfile */,
+				4D5478DF240158DE00A954E8 /* Containerfile */,
 				4DB4E6772108FA7300C2F1F2 /* Info.plist */,
 				AD5A8D7C4E2554CA007B8BCA /* LICENSE */,
 				4D045DCC26D669C900D4D816 /* Makefile */,
@@ -192,8 +192,8 @@
 			children = (
 				AD5A8C0CAECE34378C913A92 /* AceStreamEngine.swift */,
 				AD5A86A22D03052826FE34C3 /* AceStreamPlaylist.swift */,
-				AD5A8F85E66D4A2038E37C4C /* DockerEngine.swift */,
-				AD5A8EAD6357A8D9E3D66A96 /* DockerImage.swift */,
+				AD5A8F85E66D4A2038E37C4C /* PodmanEngine.swift */,
+				AD5A8EAD6357A8D9E3D66A96 /* PodmanImage.swift */,
 				AD5A8985772955383DE6F9FD /* PlaylistServer.swift */,
 				AD5A8936895AD49047CC3118 /* Service.swift */,
 				AD5A80670EFB8FEC13A07959 /* StreamPeers.swift */,
@@ -217,8 +217,8 @@
 			dependencies = (
 			);
 			name = "Ace Link";
-			productName = "Ace Link";
-			productReference = 4DB4E66B2108FA7200C2F1F2 /* Ace Link.app */;
+			productName = "Ace Link Podman";
+			productReference = 4DB4E66B2108FA7200C2F1F2 /* Ace Link Podman.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -229,7 +229,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 1110;
-				ORGANIZATIONNAME = blaise.io;
+				ORGANIZATIONNAME = "Swift-Jr";
 				TargetAttributes = {
 					4DB4E66A2108FA7200C2F1F2 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -265,7 +265,7 @@
 				4DB4E6732108FA7300C2F1F2 /* Assets.xcassets in Resources */,
 				4D0CFED82427B04000264B83 /* VERSION in Resources */,
 				4DE97F3026A4652900432554 /* README.md in Resources */,
-				4D5478E0240158DF00A954E8 /* Dockerfile in Resources */,
+				4D5478E0240158DF00A954E8 /* Containerfile in Resources */,
 				AD5A83D224284D501D147C43 /* .swiftformat in Resources */,
 				AD5A8874F6879E0DF60681F5 /* .swiftlint.yml in Resources */,
 				AD5A8225147415D74A2F48D3 /* acelink.png in Resources */,
@@ -284,7 +284,7 @@
 				4D9442722722EAA800D11C91 /* SelectPlayerMenu.swift in Sources */,
 				4D94427627259F4E00D11C91 /* StreamFile.swift in Sources */,
 				4D264644210CE84800B0570A /* MainMenu.swift in Sources */,
-				4D0CFED224278D8400264B83 /* InstallDockerMenu.swift in Sources */,
+				4D0CFED224278D8400264B83 /* PodmanRequiredMenu.swift in Sources */,
 				4DCF492926BFF70000A54904 /* HistoryMenu.swift in Sources */,
 				4D0CFED024278D0900264B83 /* UpdateMenu.swift in Sources */,
 				4D0CFED62427947900264B83 /* OpenStreamMenu.swift in Sources */,
@@ -299,8 +299,8 @@
 				AD5A8B1147DBEFCDB64C9215 /* NSAlert.swift in Sources */,
 				AD5A82BE61F53B57EE2B4CC6 /* ExtractStream.swift in Sources */,
 				AD5A838924503652F64B72D0 /* LoadingIndicator.swift in Sources */,
-				AD5A8710E6D64CC1A15C834A /* DockerEngine.swift in Sources */,
-				AD5A8C93E5AA9CAF89B785D4 /* DockerImage.swift in Sources */,
+				AD5A8710E6D64CC1A15C834A /* PodmanEngine.swift in Sources */,
+				AD5A8C93E5AA9CAF89B785D4 /* PodmanImage.swift in Sources */,
 				AD5A8997FD737B11E1331545 /* AceStreamEngine.swift in Sources */,
 				AD5A8BAC68DF8FA7D78C1FAC /* StreamPeers.swift in Sources */,
 				4D867EEB2761340800EC726E /* main.swift in Sources */,
@@ -446,8 +446,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = "";
-				PRODUCT_BUNDLE_IDENTIFIER = io.blaise.acelink;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = io.swiftjr.acelinkpodman;
+				PRODUCT_NAME = "Ace Link Podman";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
@@ -468,8 +468,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = "";
-				PRODUCT_BUNDLE_IDENTIFIER = io.blaise.acelink;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = io.swiftjr.acelinkpodman;
+				PRODUCT_NAME = "Ace Link Podman";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};

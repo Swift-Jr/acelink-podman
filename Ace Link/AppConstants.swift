@@ -1,6 +1,9 @@
 import Foundation
 
 public enum AppConstants {
+    static let displayName = "Ace Link Podman"
+    static let supportDirectoryName = "acelink-podman"
+
     static var version: String {
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
             return version
@@ -19,12 +22,13 @@ public enum AppConstants {
         case none
     }
 
-    enum Docker {
+    enum Podman {
         static let baseURL = URL(string: "http://127.0.0.1:\(enginePort)")!
-        static let bundleID = "com.docker.docker"
-        static let containerName = "acelink--ace-stream-server"
+        static let command = "podman"
+        static let containerName = "acelink-podman--ace-stream-server"
         static let enginePort = 6878
-        static let image = "blaiseio/acelink:\(AppConstants.version)"
+        static let image = "localhost/swift-jr/acelink-podman:\(AppConstants.version)"
+        static let platform = "linux/amd64"
         static let proxyPort = 6888
     }
 }

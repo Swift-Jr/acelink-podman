@@ -9,7 +9,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_: Notification) {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
-        statusItem?.menu = MainMenu(title: "Ace Link")
+        statusItem?.menu = MainMenu(title: AppConstants.displayName)
 
         if let statusItemButton = statusItem?.button {
             loading.statusItemButton = statusItemButton
@@ -26,7 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func application(_: NSApplication, open urls: [URL]) {
-        if Process.runCommand("docker", "--version").terminationStatus != 0 {
+        if Process.runCommand(AppConstants.Podman.command, "--version").terminationStatus != 0 {
             return
         }
         if let url = urls.first, let stream = ExtractStream.from(applicationURL: url) {
@@ -142,16 +142,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func startAceStreamEngine(_ callback: @escaping () -> Void) {
         loading.start()
 
-        os_log("Starting Docker…")
-        DockerEngine().task { error in
+        os_log("Starting Podman…")
+        PodmanEngine().task { error in
             if let message = error?.errorDescription {
                 self.loading.stop()
                 NSAlert.error(message)
                 return
             }
 
-            os_log("Pulling Docker image…")
-            DockerImage().task { error in
+            os_log("Checking container image…")
+            PodmanImage().task { error in
                 if let message = error?.errorDescription {
                     self.loading.stop()
                     NSAlert.error(message)
@@ -207,6 +207,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func stopAceStreamServer() {
         os_log("Stopping AceStream server…")
-        _ = Process.runCommand("docker", "kill", AppConstants.Docker.containerName)
+        _ = Process.runCommand(AppConstants.Podman.command, "kill", AppConstants.Podman.containerName)
     }
 }
