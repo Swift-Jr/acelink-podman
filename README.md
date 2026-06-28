@@ -1,48 +1,80 @@
-> [!WARNING]
-> Due to time constraints, I will not review issues or pull requests unless core functionality is broken for most users. I am open to transferring ownership of this project to contributors who have selflessly helped improving this project in 2025 or before. You are also welcome to fork the project. If a fork gains traction within the community, I will archive this project and link to the fork.
+# acelink-podman
 
-# Ace Link
+`acelink-podman` is a fork of [Ace Link](https://github.com/blaise-io/acelink) that runs the Ace Stream engine with Podman instead of Docker, including a few quality of life improvements to improve loading and fix some loading issues when acestreams don't emit full metadata.
 
-Ace Link is a menu bar app that allows playing Ace Streams on macOS. 
+Play an Ace Stream or Magnet link in your preferred media player by pasting the URL into the menu bar app, or by opening an `acestream://` or `magnet:` link with Ace Link Podman.
 
-Play an Ace Stream or Magnet in any media player by pasting the URL in the Ace Link menu, or open an acestream or magnet link in Ace Link.
+<img src="acelink.png" width="350" alt="Ace Link Podman" />
 
-## [Download for macOS](https://github.com/blaise-io/acelink/releases/download/2.1.0/Ace.Link.2.1.0.dmg)
+## Requirements
 
- - Install using HomeBrew: `brew install --cask ace-link`
- - [Download an older version](https://github.com/blaise-io/acelink/releases)
+- macOS High Sierra (10.13) or later
+- Xcode or the Xcode command line tools
+- Podman
+- Homebrew, optional, used by the installer only if Podman is missing
 
-Requires Docker and macOS High Sierra (10.13) or later.
-
-<img src="acelink.png" width="350" alt="Ace Link" />
-
-### Media players
-
-Ace Link allows selecting your own media player. Ace Link does not transcode streams, so pick a player that supports popular audio and video codecs. VLC, IINA and MPV are free and open source media players that are able to play nearly anything. QuickTime and web browsers will play most streams, but not all. 
-
-### Signing
-
-Ace Link is an unsigned app because Apple does not allow p2p related applications. If your version of macOS does not allow opening unsigned applications, [follow these instructions to bypass this restriction](https://apple.stackexchange.com/a/240560).
-
-### Ace Stream server only
-
-If you just want to run the AceStream engine, you can do so without Ace Link:
+If `xcodebuild` is not available yet, install the command line tools first:
 
 ```sh
-docker run --platform=linux/amd64 --rm -p 6878:6878 blaiseio/acelink
-# now open http://<network ip>:6878/ace/getstream?id=<acestream id>
-# or http://<network ip>:6878/ace/getstream?infohash=<magnet uri> in a player
+xcode-select --install
 ```
 
-If you want to use a custom acestream.conf: 
-```
-docker run --platform=linux/amd64 --rm -p 6878:6878 -v "$(pwd)/acestream.conf:/opt/acestream/acestream.conf" blaiseio/acelink
+## Install From Source
+
+Clone the fork and run the installer:
+
+```sh
+git clone https://github.com/Swift-Jr/acelink-podman.git
+cd acelink-podman
+./scripts/install-acelink-podman.sh
 ```
 
-### View Ace Link logs
+The script will:
 
-1. Open Console.app
-2. In the Console.app search field, type `Process: Ace Link`
-3. Click on *Start* or *Start streaming*
-4. Launch Ace Link and perform an action you want to debug
-5. It should now start populating Console.app with debug information
+- install Podman with Homebrew if `podman` is missing
+- initialize and start the Podman machine when needed
+- build the Ace Stream image with `make podman`
+- build the macOS app with `xcodebuild`
+- copy `Ace Link Podman.app` to your Desktop
+
+Because the app is unsigned, macOS may block the first launch. Control-click `Ace Link Podman.app`, choose **Open**, then confirm.
+
+## Manual Build
+
+If you prefer to run the steps yourself:
+
+```sh
+podman machine init
+podman machine start
+make podman
+xcodebuild -scheme 'Ace Link' -configuration Debug -derivedDataPath /tmp/acelink-podman-derived build
+cp -R "/tmp/acelink-podman-derived/Build/Products/Debug/Ace Link Podman.app" "$HOME/Desktop/"
+```
+
+If your Podman machine already exists, `podman machine init` may report that and can be skipped.
+
+## Media Players
+
+Ace Link Podman lets you choose your own media player. It does not transcode streams, so pick a player that supports common audio and video codecs. VLC, IINA, and MPV are good choices. QuickTime and web browsers play many streams, but not all.
+
+## Ace Stream Server Only
+
+To run just the Ace Stream engine without the macOS app:
+
+```sh
+make podman
+podman run --platform=linux/amd64 --rm -p 6878:6878 localhost/swift-jr/acelink-podman:latest
+```
+
+Then open one of these URLs in a player:
+
+```text
+http://127.0.0.1:6878/ace/getstream?id=<acestream id>
+http://127.0.0.1:6878/ace/getstream?infohash=<magnet hash>
+```
+
+To use a custom `acestream.conf`:
+
+```sh
+podman run --platform=linux/amd64 --rm -p 6878:6878 -v "$(pwd)/acestream.conf:/opt/acestream/acestream.conf" localhost/swift-jr/acelink-podman:latest
+```

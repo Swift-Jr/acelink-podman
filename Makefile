@@ -1,12 +1,13 @@
 VERSION := $(shell cat VERSION)
-ARCHIVEDIR ?= $(CURDIR)/builds/archives/Ace.Link.$(VERSION).xcarchive
-RELEASEDIR ?= $(CURDIR)/builds/Ace.Link.$(VERSION)
-DOCKER_BUILDKIT ?= 1
-DOCKER_DEFAULT_PLATFORM ?= linux/amd64
+APP_NAME ?= Ace Link Podman
+ARCHIVEDIR ?= $(CURDIR)/builds/archives/Ace.Link.Podman.$(VERSION).xcarchive
+RELEASEDIR ?= $(CURDIR)/builds/Ace.Link.Podman.$(VERSION)
+PODMAN_IMAGE ?= localhost/swift-jr/acelink-podman
+PODMAN_PLATFORM ?= linux/amd64
 
-docker:
-	# Create docker image
-	docker build . --tag blaiseio/acelink:$(VERSION) --progress=plain
+podman:
+	# Create podman image
+	podman build . --file Containerfile --platform=$(PODMAN_PLATFORM) --tag $(PODMAN_IMAGE):$(VERSION) --tag $(PODMAN_IMAGE):latest
 
 build:
 	# Create a build
@@ -23,9 +24,9 @@ release:
 	# Create a new release DMG from the latest build
 	rm -rf $(RELEASEDIR)
 	mkdir -p $(RELEASEDIR)
-	cp -R '$(ARCHIVEDIR)/Products/Applications/Ace Link.app' $(RELEASEDIR)
+	cp -R '$(ARCHIVEDIR)/Products/Applications/$(APP_NAME).app' $(RELEASEDIR)
 	ln -s /Applications $(RELEASEDIR)/Applications
-	hdiutil create -volname "Ace Link $(VERSION)" -srcfolder $(RELEASEDIR) -ov -format UDZO $(RELEASEDIR).dmg
+	hdiutil create -volname "$(APP_NAME) $(VERSION)" -srcfolder $(RELEASEDIR) -ov -format UDZO $(RELEASEDIR).dmg
 	rm -rf $(RELEASEDIR)
 	open -a finder $(CURDIR)/builds
-	open https://github.com/blaise-io/acelink/releases/new
+	open https://github.com/Swift-Jr/acelink-podman/releases/new

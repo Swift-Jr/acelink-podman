@@ -2,7 +2,7 @@ import Cocoa
 
 extension NSAlert {
     static func error(_ error: String) {
-        showAlert(messageText: "Ace Link error", informativeText: error)
+        showAlert(messageText: "\(AppConstants.displayName) error", informativeText: error)
     }
 
     static func warning(messageText: String, informativeText: String) {

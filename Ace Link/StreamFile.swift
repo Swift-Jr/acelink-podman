@@ -18,7 +18,7 @@ struct StreamFile {
     var hash: String
     var type: AppConstants.StreamType
     var title: String = "Unknown stream"
-    var playlistURL = URL(string: "http://127.0.0.1:\(AppConstants.Docker.proxyPort)/acelink.m3u8")!
+    var playlistURL = URL(string: "http://127.0.0.1:\(AppConstants.Podman.proxyPort)/acelink.m3u8")!
 
     var param: String {
         switch type {
@@ -30,13 +30,13 @@ struct StreamFile {
     }
 
     var streamURL: URL {
-        AppConstants.Docker.baseURL
+        AppConstants.Podman.baseURL
             .appendingPathComponent("/ace/getstream")
             .appendingQuery(param, hash)
     }
 
     var m3uData: String {
-        "#EXTM3U\n#EXTINF:0, Ace Link - \(title)\n\(streamURL.absoluteString)"
+        "#EXTM3U\n#EXTINF:0, \(AppConstants.displayName) - \(title)\n\(streamURL.absoluteString)"
     }
 
     func addToHistory() {
@@ -60,7 +60,7 @@ struct StreamFile {
 
     func getURLForBundleType(_ bundle: Bundle) -> URL {
         if bundle.isBrowser {
-            return AppConstants.Docker.baseURL.appendingPathComponent("/webui/player/\(hash)")
+            return AppConstants.Podman.baseURL.appendingPathComponent("/webui/player/\(hash)")
         } else {
             return playlistURL
         }
